@@ -1,13 +1,12 @@
-public class QueueNumber {
-    private static QueueNumber instance;
+public class Application {
+    private static Application instance;
     private int currentQueueNumber = 1;
+    private Application() {
+    }
 
-    private QueueNumber() {}
-
-    public static QueueNumber getInstance() {
-        if (instance == null) {
-            instance = new QueueNumber();
-        }
+    public static synchronized Application getInstance() {
+        if (instance == null)
+            instance = new Application();
         return instance;
     }
 
@@ -20,7 +19,12 @@ public class QueueNumber {
             currentQueueNumber = newQueueNumber;
             System.out.println("Queue system reset to queue number: " + newQueueNumber);
         } else {
-            System.out.println("Invalid input. Please provide a number greater than or equal to the current queue number.");
+            System.out.println("Sorry, invalid input. Kindly provide a number greater than or equal to the current queue number.");
         }
+    }
+
+    public void serveNextCustomer(String stationName) {
+        int customerQueueNumber = getNextQueueNumber();
+        System.out.println(stationName + " is assisting customer with queue number: " + customerQueueNumber);
     }
 }
