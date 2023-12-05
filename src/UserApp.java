@@ -1,9 +1,7 @@
 public class UserApp {
     public static void main(String[] args) {
-        // Instantiate the app
         Application app = Application.getInstance();
 
-        // Help desk station logic
         System.out.println("The Pag-ibig office help desk stations:");
 
         app.serveNextCustomer("Help Desk 1");
